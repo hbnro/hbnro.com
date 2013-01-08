@@ -1,0 +1,86 @@
+---
+date:
+  now: Justo ahora
+  tomorrow: Mañana
+  yesterday: Ayer
+  from_now: A partir de ahora
+  last_month: Hace un mes
+  next_month: El siguiente mes
+  next_week: La próxima semana
+  less_than_minute: Ménos de un minuto
+  in_weeks:
+    other: Faltan %d semanas
+  in_hours:
+    other: Faltan %d horas
+  minutes_ago:
+    other: Hace %d minutos
+  hours_ago:
+    other: Hace %d horas
+  days_ago:
+    other: Hace %d días
+  weeks_ago:
+    other: Hace %d semanas
+  in_a_hour: En una hora
+  in_a_minute: En un minuto
+  hour_ago: Hace una hora
+  seconds:
+    one: Un segundo
+    other: %d segundos
+  minutes:
+    one: Un minuto
+    other: %d minutos
+  hours:
+    one: Una hora
+    other: %d horas
+  days:
+    one: Un día
+    other: %d días
+  weeks:
+    one: Una semana
+    other: %d semanas
+  months:
+    one: Un mes
+    other: %d meses
+  years:
+    one: Un año
+    other: %d años
+  sun: Dom
+  mon: Lun
+  tue: Mar
+  wed: Vie
+  thu: Jue
+  fri: Vie
+  sat: Sab
+  sunday: Domingo
+  monday: Lunes
+  tuesday: Martes
+  wednesday: Miercoles
+  thursday: Jueves
+  friday: Viernes
+  saturday: Sábado
+  jan: Ene
+  feb: Feb
+  mar: Mar
+  apr: Abr
+  may: May
+  jun: Jun
+  jul: Jul
+  aug: Ago
+  sep: Sep
+  oct: Oct
+  nov: Nov
+  dec: Dic
+  january: Enero
+  february: Febrero
+  march: Marzo
+  april: Abril
+  may: Mayo
+  june: Junio
+  july: Julio
+  august: Agosto
+  september: Septiembre
+  october: Octubre
+  november: Noviembre
+  december: Diciembre
+  am: am
+  pm: pm
