@@ -9,19 +9,19 @@ section
     table.full.zebra
       tfoot
         td { colspan => 5 }
-          = html::ul($sections->links(), array(class => 'nolist'))
+          = html::ul($sections->links(), [class => 'nolist'])
       tbody
         - $sections->each(($row) ~>
           tr
             td.max
-              = link_to(array(action => $row->url), ~>
+              = link_to([action => $row->url], ~>
                 = $row->indexed === 'on' ? ' ★ ' : ' ☆ '
                 = (string) $row->title ? ( ! $row->published ? "<del>$row->title</del>" : $row->title) : '-'
             td
               small.m-hidden = form::label("pk[$row->_id]", $row->pub_date)
             td
-              - $action = url_for('delete_section', array(':id' => $row->_id))
-              - $params = array(action => $action, method => 'delete', confirm => '¿Estás seguro?')
+              - $action = url_for('delete_section', [':id' => $row->_id])
+              - $params = [action => $action, method => 'delete', confirm => '¿Estás seguro?']
               = link_to($params, ~>
                 span.m-hidden [ Borrar ]
                 span.m-show [ &times; ]

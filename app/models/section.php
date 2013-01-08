@@ -70,7 +70,7 @@ class Section extends \Servant\Mapper\MongoDB
 
   function get_url()
   {
-    return url_for('show_section', array('*thing' => $this->attr('slug')));
+    return url_for('show_section', ['*thing' => $this->attr('slug')]);
   }
 
   function get_file()

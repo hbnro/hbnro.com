@@ -5,7 +5,7 @@ class Sections extends \Hbnro\App\Base
 
   function __construct()
   {
-    $this->error = array();
+    $this->error = [];
   }
 
   function index()
@@ -63,10 +63,10 @@ class Sections extends \Hbnro\App\Base
 
   function delete()
   {
-    if (\Section::delete_all(array('_id' => params('id')))) {
-      return redirect_to('sections', array('success' => 'A section was deleted'));
+    if (\Section::delete_all(['_id' => params('id')])) {
+      return redirect_to('sections', ['success' => 'A section was deleted']);
     }
-    return redirect_to('sections', array('error' => 'The section was not found'));
+    return redirect_to('sections', ['error' => 'The section was not found']);
   }
 
 }

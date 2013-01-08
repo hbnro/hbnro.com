@@ -9,7 +9,7 @@
           input.bg-trans.full { type => 'text', placeholder => $section->slug, value => $section->title, name => 'title', id => 'input_title' }
       .tool.hidden
         .the-content.area
-          textarea.bg-trans.full.grow.tab { rows => 10, cols => 100, name => 'content-editor', data => array(sp => 2) }
+          textarea.bg-trans.full.grow.tab { rows => 10, cols => 100, name => 'content-editor', data => [sp => 2] }
         Etiquetas:
         .text-field.area
           input.tag { name => 'tag[]' }

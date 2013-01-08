@@ -27,7 +27,7 @@ body { class => is_logged() ? 'admin' : FALSE }
           span.m-hidden habanero
           span.punct.bomb.m-show
       nav#navi
-        - $links   = array()
+        - $links   = []
         - $links []= ['get', 'left-handle', 'Instala']
         - $links []= ['learn', 'parasol', 'Documéntate']
         - $links []= ['how-to', 'left-pencil', 'Aprende']
