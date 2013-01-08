@@ -1,0 +1,6 @@
+.git*
+logs
+app/views
+app/assets
+exclude.txt
+database/sections

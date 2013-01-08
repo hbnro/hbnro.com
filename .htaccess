@@ -1,0 +1,28 @@
+<IfModule mod_rewrite.c>
+  # - Activate
+  RewriteEngine On
+  RewriteBase /
+
+   # - Assets
+  RewriteCond %{HTTP_HOST} ^static\.hbnro\.com$
+  RewriteCond /srv/www/habanero-sauce/static%{REQUEST_URI} -f
+  RewriteRule ^(.*?)$ /static/$1 [L]
+
+  # - Canonic URLs
+  RewriteCond %{HTTP_HOST} ^www\.hbnro\.com$
+  RewriteRule ^(.*)$ http://hbnro.com/$1 [L,R=301]
+
+  # - Conventional rewrite
+  RewriteCond %{REQUEST_FILENAME} -d [OR]
+  RewriteCond %{REQUEST_FILENAME} !-f [OR]
+  RewriteCond $1 !^(favicon\.(png|ico)|static|index\.php) [NC]
+  RewriteRule ^(.*)$ index.php/$1 [PT,L]
+
+  # - Default error fallback
+  ErrorDocument 404 /index.php
+</IfModule>
+
+<IfModule mod_env.c>
+  # - Environment options
+  SetEnv ENV production
+</IfModule>
