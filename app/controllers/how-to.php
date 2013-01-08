@@ -14,7 +14,7 @@ class To extends \Hbnro\App\Base
     static::$title .= ' / Aprende a usarlo';
 
     $result = \Section::get('title', 'slug')->published();
-    $this->pages = paginate_to(url_for('learn'), $result, params('p'), 33);
+    $this->pages = paginate_to(url_for('/how-to'), $result, params('p'), 33);
   }
 
   function section()

@@ -28,14 +28,14 @@ body { class => is_logged() ? 'admin' : FALSE }
           span.punct.bomb.m-show
       nav#navi
         - $links   = []
-        - $links []= ['get', 'left-handle', 'Instala']
-        - $links []= ['learn', 'parasol', 'Documéntate']
-        - $links []= ['how-to', 'left-pencil', 'Aprende']
+        - $links []= ['/get', 'left-handle', 'Instala']
+        - $links []= ['/learn', 'parasol', 'Documéntate']
+        - $links []= ['/how-to', 'left-pencil', 'Aprende']
         ul.nobullet.nolist.center
           - foreach $links as $one
             li
               - @list($segment, $icon, $title) = $one
-              a { href => url_for("/$segment"), class => $class = strpos(URI, "/$segment") === 0 ? 'here' : FALSE }
+              a { href => url_for($segment), class => $class = strpos(URI, $segment) === 0 ? 'here' : FALSE }
                 span.m-hidden = $title
                 span { class => "punct $icon" }
     #main
