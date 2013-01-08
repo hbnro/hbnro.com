@@ -1,0 +1,32 @@
+- if isset($section)
+  article.the-section { data => [url => url_for('fetch_section', ['@id' => $section->id(), '@format' => 'json'])] }
+    h1.the-title.hidden = $section->title
+    .the-body = md($section->content)
+    - if is_logged()
+      .tool.hidden
+        label { for => 'input_title' } Título del enlace:
+        .text-field.area
+          input.bg-trans.full { type => 'text', placeholder => $section->slug, value => $section->title, name => 'title', id => 'input_title' }
+      .tool.hidden
+        .the-content.area
+          textarea.bg-trans.full.grow.tab { rows => 10, cols => 100, name => 'content-editor', data => array(sp => 2) }
+        Etiquetas:
+        .text-field.area
+          input.tag { name => 'tag[]' }
+          - if $section->tags
+            - foreach $section->tags as $one
+              input.tag.old { name => 'tag[]', value => $one }
+      .edit-mode.hidden { data => [admin => is_logged() ? 'yes' : 'no'] }
+        - foreach [published => 'Publicar', indexed => 'Indexar'] as $key => $title
+          label.state
+            input.check-opt { type => 'checkbox', checked => $section->$key === 'on', name => $key }
+            span = $title
+        button.right.save-action.hidden Guardar
+        button.right.edit-action Editar
+- else
+  h2 La pagina no existe
+  - if is_logged()
+    p Pero puedes crearla si hace falta.
+    a.button { href => url_for('create_section', params('thing')), data-method => 'post' }
+      span.punct.left-leaf
+      Crear página

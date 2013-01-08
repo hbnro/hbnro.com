@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+
+<!--[if lt IE 7 ]> <html class="ie ie6 no-js" lang="en"> <![endif]-->
+<!--[if IE 7 ]>    <html class="ie ie7 no-js" lang="en"> <![endif]-->
+<!--[if IE 8 ]>    <html class="ie ie8 no-js" lang="en"> <![endif]-->
+<!--[if IE 9 ]>    <html class="ie ie9 no-js" lang="en"> <![endif]-->
+<!--[if gt IE 9]><!--><html class="no-js" lang="en"><!--<![endif]-->
+
+- stylesheet_for('app')
+- javascript_for('app')
+
+head
+  link { rel => 'icon', type => 'image/png', href => root_url('favicon.png') }
+  meta { charset => 'UTF-8' }
+  title = $title
+  = $head
+  = before_body()
+  = csrf_meta_tag()
+
+body { class => is_logged() ? 'admin' : FALSE }
+  #pleca
+  a#ribbon.m-hidden { href => 'https://github.com/pateketrueke/habanero' } Fork me on GitHub
+  #wrapper
+    header.top { contextmenu => 'admin-menu' }
+      h1#logo.center
+        a { href => url_for('root'), class => $class = URI === '/' ? 'here' : FALSE }
+          span.m-hidden habanero
+          span.punct.bomb.m-show
+      nav#navi
+        - $links   = array()
+        - $links []= ['get', 'left-handle', 'Instala']
+        - $links []= ['learn', 'parasol', 'Documéntate']
+        - $links []= ['how-to', 'left-pencil', 'Aprende']
+        ul.nobullet.nolist.center
+          - foreach $links as $one
+            li
+              - @list($segment, $icon, $title) = $one
+              a { href => url_for("/$segment"), class => $class = strpos(URI, "/$segment") === 0 ? 'here' : FALSE }
+                span.m-hidden = $title
+                span { class => "punct $icon" }
+    #main
+      section#content { role => 'page' }
+        = $body
+    footer.center
+      span.dim.end { contextmenu => is_logged() ? 'logout-menu' : FALSE }
+    menu#admin-menu { type => 'context' }
+      <menuitem label="Admin"></menuitem>
+    menu#logout-menu { type => 'context' }
+      <menuitem label="Salir"></menuitem>
+    script { src => '//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js' }
+    <script>window.jQuery || document.write("<script src='#{asset_url('lib/jquery.min.js')}'>\x3C/script>")</script>
+  = after_body()
+  - if ! is_logged() && (APP_ENV === 'production') && (fetch('tracking') === 'on')
+    script
+      window._gaq = [['_setAccount','#{option('google_ua')}'],['_trackPageview'],['_trackPageLoadTime']];
+      Modernizr.load({
+        load: ('https:' == location.protocol ? '//ssl' : '//www') + '.google-analytics.com/ga.js'
+      });
+  <!--[if lt IE 7 ]>
+    <script defer src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
+    <script defer>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
+  <![endif]-->

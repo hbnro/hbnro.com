@@ -1,0 +1,4 @@
+- if $error
+  ul.error { data => array(errors => 'true') }
+    - foreach $error as $field => $text
+      li { data => compact('field') } = "$field $text"

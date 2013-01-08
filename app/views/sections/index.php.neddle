@@ -1,0 +1,27 @@
+- use \Labourer\Web\Form as form,
+      \Labourer\Web\Html as html
+
+section
+  = partial('sections/errors.php', compact('error'))
+  - unless $sections->count()
+    h2 No hay páginas
+  - else
+    table.full.zebra
+      tfoot
+        td { colspan => 5 }
+          = html::ul($sections->links(), array(class => 'nolist'))
+      tbody
+        - $sections->each(($row) ~>
+          tr
+            td.max
+              = link_to(array(action => $row->url), ~>
+                = $row->indexed === 'on' ? ' ★ ' : ' ☆ '
+                = (string) $row->title ? ( ! $row->published ? "<del>$row->title</del>" : $row->title) : '-'
+            td
+              small.m-hidden = form::label("pk[$row->_id]", $row->pub_date)
+            td
+              - $action = url_for('delete_section', array(':id' => $row->_id))
+              - $params = array(action => $action, method => 'delete', confirm => '¿Estás seguro?')
+              = link_to($params, ~>
+                span.m-hidden [ Borrar ]
+                span.m-show [ &times; ]

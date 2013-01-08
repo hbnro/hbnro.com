@@ -1,0 +1,9 @@
+- use \Labourer\Web\Form as form
+
+.center
+  = form::put(url_for('login'), ~>
+    h2 ¿A poco si muy salsa?
+    .tool
+      input.input.center { type => 'password', placeholder => 'Contraseña', name => 'password' }
+    .tool
+      input { type => 'submit', value => 'Entrar' }
