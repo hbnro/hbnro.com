@@ -1,0 +1,186 @@
+@import "config";
+
+.nobox;
+.selection(@dark_color, @bright_color);
+
+.admin {
+  #navi { margin: 0; }
+  #logo, #ribbon { display: none; }
+}
+
+.tool { margin-bottom: 10px; }
+
+.disc { list-style-type: disc !important; }
+.square { list-style-type: square !important; }
+.circle { list-style-type: circle !important; }
+.plain { list-style-type: none !important; }
+.plus li:before { content: '+ '; }
+
+
+.the-section {
+  .redactor_box { margin-bottom: 7px; }
+  .tagedit-list {
+    width: 100%;
+    margin-top: 5px;
+    margin-left: 4px;
+    input {
+      font-size: .9em !important;
+      background: transparent !important;
+    }
+    a { text-decoration: none !important; border: 0 !important; }
+  }
+  .edit-mode {
+    .btcf;
+    margin-top: 7px;
+    padding: 13px;
+  }
+}
+
+
+.area {
+  background: rgba(255, 255, 255, .4);
+  border-top: 1px solid @secondary_color;
+}
+
+.state {
+  line-height: 20px;
+  font-size: 20px;
+  input:checked + span { font-weight: bold; }
+}
+
+table.zebra {
+  td {
+    color: @primary_color;
+    padding-left: 20px;
+    white-space: nowrap;
+    border-top: 1px solid @secondary_color;
+  }
+  tr:hover {
+    td {
+      color: @black_color;
+    }
+  }
+  td.max, th.max, table.full{
+    width: 100%;
+    padding: 0;
+  }
+}
+
+.bg-trans {
+  border: 0 !important;
+  background: none !important;
+}
+
+.text-field {
+  cursor: text;
+  min-height: 40px !important;
+}
+
+.left { float: left; }
+.right { float: right; }
+.center { text-align: center; }
+.block { display: block; }
+
+img.left,
+img.right {
+  margin: 13px 20px;
+}
+img.center { .center-block; }
+
+.dim {
+  color: @primary_color;
+  text-shadow: none;
+}
+.end:before {
+  content: "つづく";
+}
+
+.button {
+  color: @primary_color;
+  padding: .4em .8em;
+  text-decoration: none;
+  background: rgba(255, 255, 255, .4);
+  border: 1px dashed @white_color;
+  .punct { .inline-block; }
+  &:hover {
+    border-color: @complementary_color;
+    color: @complementary_color;
+  }
+}
+
+.trans { color: transparent; }
+.blank { color: white; }
+.hidden { display: none; }
+
+.toggle-block.here,
+.toggle-block:hover {
+  .blank { color: inherit; }
+  .hidden { display: block; }
+  .toggle {
+    &.show { display: none; }
+    &.hide { display: block; }
+  }
+}
+
+.toggle-inline.here,
+.toggle-inline:hover {
+  .blank { color: inherit; }
+  .hidden { .inline-block; }
+  .toggle {
+    &.show { display: none; }
+    &.hide { .inline-block; }
+  }
+}
+
+
+
+.punct {
+  .square(36px);
+  font-size: 36px;
+  font-family: EFON;
+
+  &.before { float: left; }
+  &.after { float: right; }
+
+  &.sun:before { content: 'M'; }
+  &.bomb:before { content: '/'; }
+  &.drop:before { content: '='; }
+  &.toad:before { content: "'"; }
+  &.parasol:before { content: 'N'; }
+  &.cloud:before { content: 'm'; }
+  &.rain:before { content: 'n'; }
+  &.coffee:before { content: 'r'; }
+  &.star:before { content: 'w'; }
+  &.love:before { content: 'W'; }
+  &.strawberry:before { content: '<'; }
+  &.apple:before { content: '('; }
+  &.bun:before { content: 'R'; }
+  &.pulp:before { content: '~'; }
+  &.cactus:before { content: '@'; }
+
+  &.left-pencil:before { content: ~'"\\"'; }
+  &.left-spiral:before { content: '.'; }
+  &.left-leaf:before { content: '['; }
+  &.left-fly:before { content: 'l'; }
+  &.left-car:before { content: 'I'; }
+  &.left-duck:before { content: 'U'; }
+  &.left-ant:before { content: 'T'; }
+  &.left-ghost:before { content: 'Z'; }
+  &.left-spoke:before { content: 'A'; }
+  &.left-handle:before { content: 'c'; }
+  &.left-fox:before { content: 'D'; }
+  &.left-moon:before { content: 'E'; }
+
+  &.right-pencil:before { content: '|'; }
+  &.right-spiral:before { content: '>'; }
+  &.right-leaf:before { content: '{'; }
+  &.right-fly:before { content: 'L'; }
+  &.right-car:before { content: 'i'; }
+  &.right-duck:before { content: 'u'; }
+  &.right-ant:before { content: 't'; }
+  &.right-ghost:before { content: 'z'; }
+  &.right-spoke:before { content: 'a'; }
+  &.right-handle:before { content: 'C'; }
+  &.right-fox:before { content: 'd'; }
+  &.right-moon:before { content: 'e'; }
+}

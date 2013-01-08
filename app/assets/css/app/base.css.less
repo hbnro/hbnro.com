@@ -1,0 +1,85 @@
+@import "config";
+@import "fonts";
+
+body {
+  font-family: 'Roboto Regular', Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+  background: asset-url('worn_dots.png');
+  color: @black_color;
+  padding: 0;
+  margin: 0;
+}
+
+section, article, aside, header, footer, nav {
+  p, td, li, dd, a, h1, h2, h3, figure, code {
+    .transition;
+  }
+  p, td, li, dd, h1, h2, h3, nav, figcaption {
+    a {
+      outline: 0 !important;
+      text-decoration: none;
+      color: @complementary_color;
+      &.here { color: @dark_color; }
+      &:hover {
+        border-bottom: 1px dashed @white_color;
+        color: @black_color;
+      }
+    }
+  }
+}
+
+input[type=submit], button {
+  padding: .6em 1em;
+  font-size: .7em;
+}
+select, textarea { padding: 5px; }
+
+var, samp, tt, code, pre {
+  font-family: "Andale Mono", AndaleMono, monospace;
+}
+
+samp, p code, li code {
+  padding: .1em .3em;
+  color: @black_color;
+  .inner-shadow(0, 0, 20px, darken(@secondary_color, 7%));
+  background: @secondary_color;
+  font-size: 78%;
+}
+pre {
+  width: 100%;
+  overflow: auto;
+  color: @white_color;
+  background: @black_color;
+  font-size: 72%;
+  padding: .5em;
+  .dim { color: @bright_color; }
+}
+
+em, i {
+  color: @alternative_color;
+}
+strong, b {
+  color: @primary_color;
+}
+
+ul, ol { list-style-position: inside; padding-left: 1.2em; }
+
+p {
+  background: rgba(255, 255, 255, .4);
+  line-height: 1.35em;
+  padding: 5px;
+}
+
+li, p, figcaption {
+  letter-spacing: .03em;
+  word-spacing: .25em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: @dark_color;
+  word-spacing: .2em;
+  letter-spacing: -.02em;
+}
+
+h1 { font-size: 1.9em !important; }
+h2 { font-size: 1.6em !important; }
+h3 { font-size: 1.3em !important; }
