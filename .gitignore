@@ -1,7 +1,8 @@
 *~
 *.log
 .DS_Store
-database/db.sqlite
+database/sqlite.db
+database/sections/*
 config/resources.php
 static/resources/*
 static/img/*
