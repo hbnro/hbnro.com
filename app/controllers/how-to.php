@@ -9,13 +9,17 @@ class To extends \Hbnro\App\Base
   {
     $name = params('tag');
 
-    assign('tracking', 'on');
-
-    static::$title .= ' / Buscar temas';
+    static::$title .= ' / Buscar artículos';
     static::$head []= tag('meta', 'description', "Aprende a usar Habanero. Listado de artículos por tema en común: $name");
 
     $result = \Section::get('title', 'slug')->published()->where(['tags' => $name]);
     $this->pages = paginate_to(url_for('filter', [':tag' => $name]), $result, params('p'), 33);
+
+    if ($result->count()) {
+      assign('tracking', 'on');
+    } else {
+      static::$status = 404;
+    }
   }
 
   function index()
@@ -23,7 +27,7 @@ class To extends \Hbnro\App\Base
     assign('tracking', 'on');
 
     static::$title .= ' / Aprende a usarlo';
-    static::$head []= tag('meta', 'description', 'Aprende a usar Habanero. En esta sección puedes encontrar ejemplos, recursos y todo lo necesario para comenzar. ¡Recomendado!');
+    static::$head []= tag('meta', 'description', 'Aprende a usar Habanero. En esta sección puedes encontrar ejemplos, recursos y todo lo necesario para comenzar. ¡Recomendádo!');
 
     $result = \Section::get('title', 'slug')->published();
     $this->pages = paginate_to(url_for('/how-to'), $result, params('p'), 33);

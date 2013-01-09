@@ -1,5 +1,2 @@
-h2 Por etiqueta: #{params('tag')}
-
-ul
-  - $pages->each(($one) ~>
-    li = $one->link
+h2 Por tema: #{params('tag')}
+= partial('_/list_links.php', get_defined_vars())

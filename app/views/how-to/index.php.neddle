@@ -1,5 +1,2 @@
-h2 Índice de temas
-
-ul
-  - $pages->each(($one) ~>
-    li = $one->link
+h2 Índice de árticulos
+= partial('_/list_links.php', get_defined_vars())

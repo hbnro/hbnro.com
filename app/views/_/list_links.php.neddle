@@ -1,0 +1,6 @@
+- unless $pages->count()
+  span.dim &mdash; No hay temas aún.
+- else
+  ul
+    - $pages->each(($one) ~>
+      li = $one->link
