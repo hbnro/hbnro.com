@@ -1,2 +1,2 @@
-h2 Índice de árticulos
+h2 Índice de artículos
 = partial('_/list_links.php', get_defined_vars())
