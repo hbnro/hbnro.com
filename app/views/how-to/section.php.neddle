@@ -27,7 +27,9 @@
         button.right.edit-action Editar
 - else
   h2 La pagina no existe
-  - if is_logged()
+  - unless is_logged()
+    span.dim &mdash; Revisa que hayas escrito bien la dirección.
+  - else
     p Pero puedes crearla si hace falta.
     a.button { href => url_for('create_section', params('thing')), data-method => 'post' }
       span.punct.left-leaf

@@ -24,13 +24,17 @@ class To extends \Hbnro\App\Base
 
   function index()
   {
-    assign('tracking', 'on');
-
     static::$title .= ' / Aprende a usarlo';
     static::$head []= tag('meta', 'description', 'Aprende a usar Habanero. En esta sección puedes encontrar ejemplos, recursos y todo lo necesario para comenzar. ¡Recomendádo!');
 
     $result = \Section::get('title', 'slug')->published();
     $this->pages = paginate_to(url_for('/how-to'), $result, params('p'), 33);
+
+    if ($result->count()) {
+      assign('tracking', 'on');
+    } else {
+      static::$status = 404;
+    }
   }
 
   function section()
