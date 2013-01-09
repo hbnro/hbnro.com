@@ -1,26 +1,28 @@
 - if isset($section)
   article.the-section { data => [url => url_for('fetch_section', ['@id' => $section->id(), '@format' => 'json'])] }
-    h1.the-title.hidden = $section->title
     .the-body = md($section->content)
-    - if is_logged()
-      .tool.hidden
-        label { for => 'input_title' } Título del enlace:
-        .text-field.area
-          input.bg-trans.full { type => 'text', placeholder => $section->slug, value => $section->title, name => 'title', id => 'input_title' }
-      .tool.hidden
-        .the-content.area
-          textarea.bg-trans.full.grow.tab { rows => 10, cols => 100, name => 'content-editor', data => [sp => 2] }
-        Etiquetas:
-        .text-field.area
-          input.tag { name => 'tag[]' }
-          - if $section->tags
+    - if $section->published
+      .the-meta
+        nav.tags
+          &mdash;
+          - unless $section->tags
+            Sin etiquetas
+          - else
+            - $links = []
             - foreach $section->tags as $one
-              input.tag.old { name => 'tag[]', value => $one }
+              - $links []= link_to($one, url_for('filter', [':tag' => $one]))
+            Etiquetas:
+            = join(', ', $links)
+            |.
+        time.date
+          &mdash;
+          = $section->human_date
+    - if is_logged()
+      = partial('_/edit_section.php', get_defined_vars())
       .edit-mode.hidden { data => [admin => is_logged() ? 'yes' : 'no'] }
         - foreach [published => 'Publicar', indexed => 'Indexar'] as $key => $title
-          label.state
-            input.check-opt { type => 'checkbox', checked => $section->$key === 'on', name => $key }
-            span = $title
+          input.check-opt { id => "opt_$key", type => 'checkbox', checked => $section->$key === 'on', name => $key }
+          label.state { for => "opt_$key" } = $title
         button.right.save-action.hidden Guardar
         button.right.edit-action Editar
 - else

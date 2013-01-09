@@ -7,14 +7,14 @@ class Section extends \Servant\Mapper\MongoDB
   const CONNECTION = '';
 
   static $columns = [
-            'title' => ['type' => 'string'],
-            'slug' => ['type' => 'string'],
-            'meta' => ['type' => 'hash'],
-            'tags' => ['type' => 'array'],
-            'indexed' => ['type' => 'boolean'],
-            'published' => ['type' => 'boolean'],
-            'modified_at' => ['type' => 'timestamp'],
-            'created_at' => ['type' => 'timestamp'],
+            'tags' => ['type' => 'array'],            // related
+            'slug' => ['type' => 'string'],           // permalink
+            'title' => ['type' => 'string'],          // usual link-text
+            'indexed' => ['type' => 'boolean'],       // mark as crawable
+            'published' => ['type' => 'boolean'],     // show @ /how-to
+            'description' => ['type' => 'string'],    // ...
+            'modified_at' => ['type' => 'timestamp'], //
+            'created_at' => ['type' => 'timestamp'],  //
           ];
 
   static $indexes = [
@@ -27,6 +27,7 @@ class Section extends \Servant\Mapper\MongoDB
           ];
 
 
+  static $indexed = ['where' => ['indexed' => 'on']];
   static $published = ['where' => ['published' => 'on']];
 
 
@@ -36,6 +37,11 @@ class Section extends \Servant\Mapper\MongoDB
     is_dir($dir) OR mkdir($dir, 0755, TRUE);
 
     write($this->get_file(), $body);
+  }
+
+  function get_human_date()
+  {
+    return mdate('%j de %F, %Y a las %H:%i %a.', strtotime($this->attr('modified_at')));
   }
 
   function get_pub_date()

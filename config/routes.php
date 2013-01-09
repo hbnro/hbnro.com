@@ -48,4 +48,5 @@ mount(function () {
 
 // paginas
 get('/how-to', 'how-to#index', ['path' => 'learn']);
+get('/how-to/:tag', 'how-to#tags', ['path' => 'filter']);
 get('/*thing', 'how-to#section', ['path' => 'show_section']);

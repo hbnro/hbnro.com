@@ -1,0 +1,18 @@
+.tool.hidden
+  label { for => 'input_title' } Título del enlace:
+  .text-field.area
+    input#input_title.bg-trans.full { type => 'text', placeholder => $section->slug, value => $section->title }
+.tool.hidden
+  .the-content.area
+    textarea#input_content.bg-trans.full.grow.tab { rows => 10, cols => 100, data => [sp => 2], title => 'Contenido' }
+.tool.hidden
+  label { for => 'input_excerpt' } Descripción:
+  .the-excerpt.area
+    textarea#input_excerpt.bg-trans.full { rows => 1, cols => 100, name => 'content-description' }
+.tool.hidden
+  Etiquetas:
+  .the-tags.text-field.area
+    input.tag { name => 'tag[]', title => 'Etiqueta nueva' }
+    - if $section->tags
+      - foreach $section->tags as $one
+        input.tag.old { name => 'tag[]', value => $one, title => $one }

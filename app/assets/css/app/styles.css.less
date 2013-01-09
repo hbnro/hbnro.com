@@ -34,6 +34,7 @@
     margin-top: 7px;
     padding: 13px;
   }
+  .the-meta { font-size: .8em; color: @primary_color; }
 }
 
 
@@ -42,11 +43,8 @@
   border-top: 1px solid @secondary_color;
 }
 
-.state {
-  line-height: 20px;
-  font-size: 20px;
-  input:checked + span { font-weight: bold; }
-}
+input + label { line-height: 20px; font-size: 20px; }
+input:checked + label.state { font-weight: bold; }
 
 table.zebra {
   td {

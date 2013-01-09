@@ -2,9 +2,6 @@ $ ->
 
   section = $('#content .the-section')
 
-  field = (name) ->
-    document.getElementsByName name
-
   $('input.tag').tagedit
     breakKeyCodes: [ 13, 44, 32 ]
     autocompleteOptions:
@@ -42,9 +39,13 @@ $ ->
 
     el = $(@)
 
-    content = $(field('content-editor')[0])
+    content = $('#input_content')
+    excerpt = $('#input_excerpt')
 
-    title = section.find('.the-title');
+    title = $('#input_title')
+
+    meta = section.find('.the-meta')
+    tags = section.find('.the-tags')
     main = section.find('.the-body');
 
     toggle = el.find('.check-opt')
@@ -66,24 +67,28 @@ $ ->
     edit.click ->
       main.hide().empty()
       edit.hide()
+      meta.hide()
       save.show()
 
       $.getJSON url, (data) ->
+        title.val(data.title)
         content.html(data.body)
+        excerpt.html(data.excerpt)
         content.addClass('expand260-1000').TextAreaExpander()
         tools.show()
 
     save.click ->
       set = []
 
-      for tag in field('tag[]')
-        set.push tag.value if tag.value
+      tags.find('input').each ->
+        set.push @.value if @.value
 
       $.post url,
         _method: 'put'
         content: content.val()
+        excerpt: excerpt.val()
         action: 'update'
-        title: field('title')[0].value
+        title: title.val()
         tags: set or []
       , (data) ->
         if data.error
@@ -96,6 +101,7 @@ $ ->
           tools.hide()
           save.hide()
           edit.show()
+          meta.show()
       , 'json'
 
     el.show()

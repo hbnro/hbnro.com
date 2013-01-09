@@ -34,6 +34,7 @@ class Sections extends \Hbnro\App\Base
           $found->$key = params('value');
           return $found->save() ? [$key => $found->$key] : ['error' => 'failure'];
         case 'update';
+          $found->description = params('excerpt');
           $found->content = params('content');
           $found->title = params('title');
           $found->tags = params('tags');
@@ -56,7 +57,11 @@ class Sections extends \Hbnro\App\Base
   function fetch()
   {
     if ($found = \Section::first(params('id'))) {
-      return ['body' => $found->content];
+      return [
+        'title' => $found->title,
+        'body' => $found->content,
+        'excerpt' => $found->description,
+      ];
     }
     return ['error' => 'missing'];
   }

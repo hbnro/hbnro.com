@@ -1,4 +1,4 @@
-h2 Índice de temas
+h2 Por etiqueta: #{params('tag')}
 
 ul
   - $pages->each(($one) ~>
